@@ -1,4 +1,21 @@
-import { Invoice } from "./classess/Invoice.js";
+const me = {
+    name: "Shivang",
+    age: 23,
+    speak(text) {
+        console.log(text);
+    },
+    spend(amount) {
+        console.log("I spent ", amount);
+        return amount;
+    }
+};
+const greetPerson = (person) => {
+    console.log(person.name);
+};
+greetPerson(me);
+console.log(me);
+import {Invoice} from "./classess/Invoice.js";
+
 const inOne = new Invoice("Shivang", "mytasks", 1000);
 const inTwo = new Invoice("Shiv", "mytasks", 100);
 let invoices = [];
