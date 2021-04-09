@@ -2,17 +2,17 @@ import {Invoice} from "./classess/Invoice.js";
 import {Payment} from "./classess/Payments.js";
 import {HasFormatter} from "./interfaces/HasFormatter.js";
 
-let docOne: HasFormatter;
-let docTwo: HasFormatter;
-
-docOne = new Invoice('Shiva', "webdev", 230);
-docTwo = new Payment("Shiv", "ios",2423);
-
-let docs: HasFormatter[] = [];
-docs.push(docOne);
-docs.push(docTwo);
-
-console.log(docs);
+// let docOne: HasFormatter;
+// let docTwo: HasFormatter;
+//
+// docOne = new Invoice('Shiva', "webdev", 230);
+// docTwo = new Payment("Shiv", "ios",2423);
+//
+// let docs: HasFormatter[] = [];
+// docs.push(docOne);
+// docs.push(docTwo);
+//
+// console.log(docs);
 
 const inOne = new Invoice("Shivang", "mytasks", 1000);
 const inTwo = new Invoice("Shiv", "mytasks", 100);
@@ -31,10 +31,12 @@ const amount = document.querySelector('#amount') as HTMLInputElement;
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
 
-    console.log(
-        type.value,
-        tofrom.value,
-        details.value,
-        amount.valueAsNumber
-    )
+    let doc: HasFormatter;
+    if (type.value === 'invoice') {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+    } else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+    }
+
+    console.log(doc)
 })

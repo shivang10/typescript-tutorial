@@ -1,13 +1,16 @@
 import { Invoice } from "./classess/Invoice.js";
 import { Payment } from "./classess/Payments.js";
-let docOne;
-let docTwo;
-docOne = new Invoice('Shiva', "webdev", 230);
-docTwo = new Payment("Shiv", "ios", 2423);
-let docs = [];
-docs.push(docOne);
-docs.push(docTwo);
-console.log(docs);
+// let docOne: HasFormatter;
+// let docTwo: HasFormatter;
+//
+// docOne = new Invoice('Shiva', "webdev", 230);
+// docTwo = new Payment("Shiv", "ios",2423);
+//
+// let docs: HasFormatter[] = [];
+// docs.push(docOne);
+// docs.push(docTwo);
+//
+// console.log(docs);
 const inOne = new Invoice("Shivang", "mytasks", 1000);
 const inTwo = new Invoice("Shiv", "mytasks", 100);
 let invoices = [];
@@ -20,5 +23,12 @@ const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
+    let doc;
+    if (type.value === 'invoice') {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    console.log(doc);
 });
