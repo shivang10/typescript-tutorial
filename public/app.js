@@ -1,21 +1,13 @@
-const me = {
-    name: "Shivang",
-    age: 23,
-    speak(text) {
-        console.log(text);
-    },
-    spend(amount) {
-        console.log("I spent ", amount);
-        return amount;
-    }
-};
-const greetPerson = (person) => {
-    console.log(person.name);
-};
-greetPerson(me);
-console.log(me);
-import {Invoice} from "./classess/Invoice.js";
-
+import { Invoice } from "./classess/Invoice.js";
+import { Payment } from "./classess/Payments.js";
+let docOne;
+let docTwo;
+docOne = new Invoice('Shiva', "webdev", 230);
+docTwo = new Payment("Shiv", "ios", 2423);
+let docs = [];
+docs.push(docOne);
+docs.push(docTwo);
+console.log(docs);
 const inOne = new Invoice("Shivang", "mytasks", 1000);
 const inTwo = new Invoice("Shiv", "mytasks", 100);
 let invoices = [];
