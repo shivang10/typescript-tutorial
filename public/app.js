@@ -43,14 +43,20 @@ const addUID = (obj) => {
 };
 let docOne = addUID({ name: "yoshi", age: 40 });
 console.log(docOne.name);
+// ENUMS
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
+    ResourceType[ResourceType["PERSON"] = 1] = "PERSON";
+})(ResourceType || (ResourceType = {}));
 const docTwo = {
     uid: 1,
-    resourceName: "person",
+    resourceName: ResourceType.PERSON,
     data: { name: "shivang" }
 };
 const docThree = {
     uid: 1,
-    resourceName: "list",
+    resourceName: ResourceType.BOOK,
     data: ["a", "b", "c"]
 };
 console.log(docTwo);
