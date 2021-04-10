@@ -28,12 +28,15 @@ const ul = document.querySelector('ul');
 const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
+    // can't use spread operator for above values array as it does not its data type
     let doc;
     if (type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     list.render(doc, type.value, 'end');
 });
@@ -43,6 +46,14 @@ const addUID = (obj) => {
 };
 let docOne = addUID({ name: "yoshi", age: 40 });
 console.log(docOne.name);
+// tuples
+let arr = ['ryu', 23, true];
+arr[0] = 1;
+arr[1] = false;
+let tup = ["shiv", 23, true];
+tup[0] = "Shivang";
+let student;
+student = ["Rooney", 34];
 // ENUMS
 var ResourceType;
 (function (ResourceType) {

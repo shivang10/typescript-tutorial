@@ -37,11 +37,15 @@ const list = new ListTemplate(ul);
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
 
+    let values: [string, string, number];
+    values = [tofrom.value, details.value, amount.valueAsNumber];
+    // can't use spread operator for above values array as it does not its data type
+
     let doc: HasFormatter;
     if (type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     } else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
 
     list.render(doc, type.value, 'end');
@@ -56,6 +60,18 @@ const addUID = <T extends object>(obj: T) => {
 let docOne = addUID({name: "yoshi", age: 40});
 
 console.log(docOne.name);
+
+// tuples
+
+let arr = ['ryu', 23, true];
+arr[0] = 1;
+arr[1] = false;
+
+let tup: [string, number, boolean] = ["shiv", 23, true];
+tup[0] = "Shivang";
+
+let student: [string, number];
+student = ["Rooney", 34];
 
 // ENUMS
 
