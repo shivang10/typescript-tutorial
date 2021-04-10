@@ -1,5 +1,6 @@
 import { Invoice } from "./classess/Invoice.js";
 import { Payment } from "./classess/Payments.js";
+import { ListTemplate } from "./classess/ListTemplate.js";
 // let docOne: HasFormatter;
 // let docTwo: HasFormatter;
 //
@@ -11,16 +12,20 @@ import { Payment } from "./classess/Payments.js";
 // docs.push(docTwo);
 //
 // console.log(docs);
-const inOne = new Invoice("Shivang", "mytasks", 1000);
-const inTwo = new Invoice("Shiv", "mytasks", 100);
-let invoices = [];
-invoices.push(inOne, inTwo);
-console.log(invoices);
+// const inOne = new Invoice("Shivang", "mytasks", 1000);
+// const inTwo = new Invoice("Shiv", "mytasks", 100);
+//
+// let invoices: Invoice[] = [];
+// invoices.push(inOne, inTwo);
+// console.log(invoices);
 const form = document.querySelector('.new-item-form');
 const type = document.querySelector('#type');
 const tofrom = document.querySelector('#tofrom');
 const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
+// list template instance
+const ul = document.querySelector('ul');
+const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let doc;
@@ -30,5 +35,5 @@ form.addEventListener('submit', (e) => {
     else {
         doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
     }
-    console.log(doc);
+    list.render(doc, type.value, 'end');
 });
